@@ -14,13 +14,24 @@ ApplicationWindow {
             height: 50
         }
         Button {
-            text: "Heartbeat once"
-            onClicked: MavlinkComm.trigger2()
+            id: hbButton
+            property int hbStatus: 0
+            text: hbStatus?"Heartbeat ON":"Heartbeat OFF"
+            onClicked: hbStatus = 1 - hbStatus
             width: 120
             height: 50
+            Timer{
+                interval: 1000
+                repeat: true
+                running: hbButton.hbStatus
+                onTriggered: {
+                    MavlinkComm.trigger2()
+                    MavlinkComm.trigger3()
+                }
+            }
         }
         Button {
-            text: "cam def"
+            text: "Send cam def once"
             onClicked: MavlinkComm.trigger3()
             width: 120
             height: 50

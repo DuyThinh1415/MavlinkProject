@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mavlinkcamera>
+    <definition version="12">
+        <model>Vio Payload G1</model>
+        <vendor>Gremsy</vendor>
+    </definition>
+    <parameters>
+        <!-- control = 0 tells us this should not create an automatic UI control -->
+        <parameter name="CAM_MODE" type="uint32" default="1" control="0">
+            <description>Camera Mode</description>
+            <options>
+                <option name="Photo" value="0">
+                </option>
+                <option name="Video" value="1">
+                </option>
+            </options>
+        </parameter>
+
+        <parameter name="TRACK_MODE" type="uint32" default="0">
+            <description>Tracking Mode</description>
+            <options>
+                <option name="Object Tracking" value="0" />
+                <option name="Object Detection" value="1" />
+            </options>
+        </parameter>
+        
+    </parameters>
+</mavlinkcamera>

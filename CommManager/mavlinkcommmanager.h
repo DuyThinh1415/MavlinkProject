@@ -1,5 +1,7 @@
 // mavlinkcommmanager.h
 #pragma once
+#include "CommManager/ParseXML/httphost.h"
+#include "CommManager/ackhandler.h"
 #include <QObject>
 #include <QUdpSocket>
 #include <mavlink/install/include/mavlink/common/mavlink.h>
@@ -14,6 +16,20 @@ public:
 
 private:
     QUdpSocket socket;
+    HttpHost testHttpHost; // test http for cam def
+    AckHandler ackHandler;
+
+    void handleMavlinkMessage(const mavlink_message_t& msg,
+                         const QHostAddress& sender,
+                         quint16 senderPort);
+
+    void handleCommandLong(const mavlink_command_long_t& cmd,
+                           uint8_t target_system, uint8_t target_component,
+                           const QHostAddress& sender, quint16 senderPort);
+
+    void sendCommandAck(uint16_t command, uint8_t result,
+                   uint8_t target_system, uint8_t target_component,
+                   const QHostAddress& sender, quint16 senderPort);
 
     // Header struct (MAVLink v2)
     struct Header {

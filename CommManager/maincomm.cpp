@@ -34,7 +34,7 @@ void MainComm::trigger3()
         return;
     }
     qDebug("send camera def");
-    mavlinkCommManager->sendCameraDefinition("C://Users//Admin//Desktop//Mini Test//Camera_Definition_001.xml");
+    mavlinkCommManager->sendCameraDefinition("C:\\Users\\Admin\\Documents\\MavlinkProject\\Source\\Camera_Definition_001.xml");
 
 }
 

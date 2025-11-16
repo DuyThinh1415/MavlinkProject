@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 list(APPEND CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/mavlink/install")
 
-find_package(Qt6 REQUIRED COMPONENTS Quick)
+find_package(Qt6 REQUIRED COMPONENTS Core Quick Network  HttpServer)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 
 find_package(MAVLink REQUIRED)
@@ -25,6 +25,9 @@ qt_add_qml_module(appMavlinkConnectProject
     QML_FILES Main.qml
     SOURCES CommManager/maincomm.h CommManager/maincomm.cpp
     SOURCES CommManager/mavlinkcommmanager.h CommManager/mavlinkcommmanager.cpp
+    SOURCES CommManager/ParseXML/parsexml.h CommManager/ParseXML/parsexml.cpp
+    SOURCES CommManager/ParseXML/httphost.h CommManager/ParseXML/httphost.cpp
+    SOURCES CommManager/ackhandler.h CommManager/ackhandler.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
@@ -41,7 +44,12 @@ set_target_properties(appMavlinkConnectProject PROPERTIES
 target_link_libraries(appMavlinkConnectProject
     PRIVATE Qt6::Quick
 )
-target_link_libraries(appMavlinkConnectProject PRIVATE Qt6::Core MAVLink::mavlink)
+target_link_libraries(appMavlinkConnectProject PRIVATE
+    Qt6::Core
+    MAVLink::mavlink
+    Qt6::Network
+    Qt6::HttpServer)
+target_link_libraries(appMavlinkConnectProject PRIVATE Qt6::Core)
 
 include(GNUInstallDirs)
 install(TARGETS appMavlinkConnectProject

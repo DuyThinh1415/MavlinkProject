@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mavlinkcamera>
+    <definition version="9">
+        <model>ZIO Payload</model>
+        <vendor>Gremsy</vendor>
+    </definition>
+    <parameters>
+        <!-- control = 0 tells us this should not create an automatic UI control -->
+        <parameter name="CAM_MODE" type="uint32" default="1" control="0">
+            <description>Camera Mode</description>
+            <options>
+                <option name="Photo" value="0">
+                </option>
+                <option name="Video" value="1">
+                </option>
+            </options>
+        </parameter>
+
+        <parameter name="TRACK_EN" type="uint32" default="0">
+            <description>Object Detection</description>
+            <options>
+                <option name="Disable" value="0" />
+                <option name="Enable" value="1" />
+            </options>
+        </parameter>
+
+        <parameter name="RC_MODE" type="uint32" default="1">
+            <description>RC Mode</description>
+            <options>
+                <option name="Gremsy" value="0" />
+                <option name="Standard" value="1" />
+            </options>
+        </parameter>
+
+        <parameter name="OSD_MODE" type="uint32" default="0">
+            <description>OSD Mode</description>
+            <options>
+                <option name="Disable" value="0" />
+                <option name="Debug" value="1" />
+                <option name="Status" value="2" />
+            </options>
+        </parameter>
+
+        <parameter name="SETTING_TARGET" type="uint32" default="0">
+            <description>Setting Target</description>
+            <options>
+                <option name="Camera Device" value="0">
+                    <exclusions>
+                        <exclude>GB_MODE</exclude>
+                    </exclusions>
+                </option>
+                <option name="Gimbal Device" value="1">
+                    <exclusions>
+                        <exclude>ID_CAMERA</exclude>
+                        <exclude>C_V_ZOOM_M</exclude>
+                        <exclude>C_V_FM</exclude>
+                        <exclude>C_V_FV</exclude>
+                        <exclude>C_V_FA</exclude>
+                        <exclude>C_V_WB</exclude>
+                        <exclude>C_V_AE</exclude>
+                        <exclude>C_V_SP</exclude>
+                        <exclude>C_V_IrP</exclude>
+                        <exclude>C_V_BrP</exclude>
+                        <exclude>C_V_FLIP</exclude>
+                        <exclude>OSD_MODE</exclude>
+
+                        <exclude>C_V_ZM_MODE</exclude>
+                        <exclude>C_V_ZM_SR</exclude>
+                        <exclude>C_V_ZM_SR_LV</exclude>
+                        <exclude>C_V_ZM_CB</exclude>
+                        <exclude>C_V_ZM_CB_LV</exclude>
+
+                        <exclude>C_V_DEFOG</exclude>
+                        <exclude>C_V_DEFOG_LV</exclude>
+
+                    </exclusions>
+                </option>
+            </options>
+        </parameter>
+
+        <parameter name="C_V_FLIP" type="uint32" default="3">
+            <description>Video Flip</description>
+            <options>
+                <option name="OFF" value="3" />
+                <option name="ON" value="2" />
+            </options>
+        </parameter>
+
+        <parameter name="C_V_DEFOG" type="uint32" default="3">
+            <description>Defog Mode</description>
+            <options>
+                <option name="OFF" value="3">
+                    <exclusions>
+                        <exclude>C_V_DEFOG_LV</exclude>
+                    </exclusions>
+                </option>
+                <option name="ON" value="2" />
+            </options>
+        </parameter>
+        <parameter name="C_V_DEFOG_LV" type="uint32" default="0">
+            <description>Defog Level</description>
+            <options>
+                <option name="Lowest" value="0" />
+                <option name="Low" value="1" />
+                <option name="Mid" value="2" />
+                <option name="High" value="3" />
+            </options>
+        </parameter>
+
+        <parameter name="C_V_AE" type="uint32" default="0">
+            <description>Auto Exposure Mode</description>
+            <options>
+                <option name="Full Auto" value="0">
+                    <exclusions>
+                        <exclude>C_V_SP</exclude>
+                        <exclude>C_V_IrP</exclude>
+                        <exclude>C_V_BrP</exclude>
+                    </exclusions>
+                </option>
+                <option name="Manual" value="3">
+                    <exclusions>
+                        <exclude>C_V_BrP</exclude>
+                    </exclusions>
+                </option>
+                <option name="Shutter Priority" value="10">
+                    <exclusions>
+                        <exclude>C_V_IrP</exclude>
+                        <exclude>C_V_BrP</exclude>
+                    </exclusions>
+                </option>
+                <option name="Iris Priority" value="11">
+                    <exclusions>
+                        <exclude>C_V_SP</exclude>
+                        <exclude>C_V_BrP</exclude>
+                    </exclusions>
+                </option>
+                <option name="Bright" value="13">
+                    <exclusions>
+                        <exclude>C_V_SP</exclude>
+                        <exclude>C_V_IrP</exclude>
+                    </exclusions>
+                </option>
+            </options>
+        </parameter>
+        <parameter name="C_V_SP" type="uint32" default="13">
+            <description>Shutter Value</description>
+            <options>
+                <option name="1/10" value="13" />
+                <option name="1/20" value="14" />
+                <option name="1/50" value="17" />
+                <option name="1/100" value="20" />
+                <option name="1/125" value="21" />
+                <option name="1/500" value="25" />
+                <option name="1/725" value="26" />
+                <option name="1/1000" value="27" />
+                <option name="1/1500" value="28" />
+                <option name="1/2000" value="30" />
+            </options>
+        </parameter>
+
+        <parameter name="C_V_IrP" type="uint32" default="25">
+            <description>Iris Value</description>
+            <options>
+                <option name="F2.0" value="25" />
+                <option name="F2.2" value="24" />
+                <option name="F2.4" value="23" />
+                <option name="F2.6" value="22" />
+                <option name="F2.8" value="21" />
+                <option name="F3.1" value="20" />
+                <option name="F3.4" value="19" />
+                <option name="F4.0" value="17"/>
+                <option name="F5.2" value="14" />
+                <option name="F6.8" value="11" />
+                <option name="F7.3" value="10" />
+                <option name="F8.7" value="8" />
+                <option name="F9.6" value="7" />
+                <option name="F10" value="6" />
+                <option name="F11" value="5" />
+            </options>
+        </parameter>
+
+        <parameter name="C_V_IrP" type="uint32" default="0" min="0" max="25" step ="1">
+            <description>Aperture Value</description>
+        </parameter>
+
+        <parameter name="C_V_BrP" type="uint32" default="0" min="0" max="41" step ="1">
+            <description>Bright Value</description>
+        </parameter>
+        
+        <parameter name="C_V_WB" type="uint32" default="0">
+            <description>WB Mode</description>
+            <options>
+                <option name="Auto" value="0" />
+                <option name="Indoor" value="1" />
+                <option name="Outdoor" value="2" />
+                <option name="One Push WB" value="3" />
+                <option name="ATW" value="4" />
+                <option name="Manual" value="5" />
+            </options>
+        </parameter>
+
+        <parameter name="C_V_ZM_MODE" type="uint32" default="0">
+            <description>Zoom Mode</description>
+            <options>
+                <option name="Combine" value="0">
+                    <exclusions>
+                        <exclude>C_V_ZM_SR</exclude>
+                        <exclude>C_V_ZM_SR_LV</exclude>
+                    </exclusions>
+                </option>
+                <option name="Super Resolution" value="2">
+                    <exclusions>
+                        <exclude>C_V_ZM_CB</exclude>
+                        <exclude>C_V_ZM_CB_LV</exclude>
+                    </exclusions>
+                </option>
+            </options>
+        </parameter>
+        
+        <parameter name="C_V_ZM_SR_LV" type="uint32" default="0">
+            <description>Zoom Level</description>
+            <options>
+                <option name="1x" value="0" />
+                <option name="2x" value="1" />
+                <option name="4x" value="2" />
+                <option name="6x" value="3" />
+                <option name="8x" value="4" />
+                <option name="10x" value="5" />
+                <option name="12x" value="6" />
+                <option name="14x" value="7" />
+                <option name="16x" value="8" />
+                <option name="18x" value="9" />
+                <option name="20x" value="10" />
+                <option name="22x" value="11" />
+                <option name="24x" value="12" />
+                <option name="26x" value="13" />
+                <option name="28x" value="14" />
+                <option name="30x" value="15" />
+            </options>
+        </parameter>
+
+        <parameter name="C_V_ZM_CB_LV" type="uint32" default="0">
+            <description>Zoom Level</description>
+            <options>
+                <option name="1x" value="0" />
+                <option name="10x" value="1" />
+                <option name="20x" value="2" />
+                <option name="40x" value="3" />
+                <option name="80x" value="4" />
+                <option name="120x" value="5" />
+                <option name="240x" value="6" />
+            </options>
+        </parameter>
+
+        <parameter name="C_V_FM" type="uint32" default="0">
+            <description>EO Focus Mode</description>
+            <options>
+                <option name="Manual" value="0">
+                    <exclusions>
+                        <exclude>C_V_FA</exclude>
+                    </exclusions>
+                </option>
+                <option name="Auto Focus" value="1">
+                    <exclusions>
+                        <exclude>C_V_FV</exclude>
+                    </exclusions>
+                </option>
+                <option name="Auto Focus OnePush" value="2">
+                    <exclusions>
+                        <exclude>C_V_FV</exclude>
+                        <exclude>C_V_FA</exclude>
+                    </exclusions>
+                </option>
+            </options>
+        </parameter>
+        <parameter name="C_V_FV" type="uint32" default="0" min="0" max="61440" step ="1">
+            <description>EO Manual Focus Value</description>
+        </parameter>
+        <parameter name="C_V_FA" type="uint32" default="0">
+            <description>EO Auto Focus Mode</description>
+            <options>
+                <option name="Normal" value="0" />
+                <option name="Zoom Trigger" value="2" />
+            </options>
+        </parameter>
+
+        <parameter name="C_V_ICR" type="uint32" default="3">
+            <description>AutoICR Mode</description>
+            <options>
+                <option name="Auto" value="2">
+                    <exclusions>
+                        <exclude>C_V_ICR_MAN</exclude>
+                    </exclusions>
+                </option>
+                <option name="Manual" value="3">
+                    <exclusions>
+                        <exclude>C_V_ICR_THR</exclude>
+                    </exclusions>
+                </option>
+            </options>
+        </parameter>
+        <parameter name="C_V_ICR_MAN" type="uint32" default="3">
+            <description>ICR Mode</description>
+            <options>
+                <option name="On" value="2" />
+                <option name="Off" value="3" />
+            </options>
+        </parameter>
+        <parameter name="C_V_ICR_THR" type="uint32" default="0" min="0" max="255" step ="1">
+            <description>ICR Threshold</description>
+        </parameter>
+
+        <parameter name="GB_MODE" type="uint32" default="0">
+            <description>Gimbal Mode</description>
+            <options>
+                <option name="OFF" value="0" />
+                <option name="LOCK" value="1" />
+                <option name="FOLLOW" value="2" />
+                <option name="MAPPING" value="3" />
+                <option name="RETURN HOME" value="4" />
+            </options>
+        </parameter>
+
+    </parameters>
+</mavlinkcamera>
