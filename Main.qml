@@ -26,7 +26,7 @@ ApplicationWindow {
                 running: hbButton.hbStatus
                 onTriggered: {
                     MavlinkComm.trigger2()
-                    MavlinkComm.trigger3()
+                    // MavlinkComm.trigger3()
                 }
             }
         }
@@ -37,16 +37,29 @@ ApplicationWindow {
             height: 50
         }
         Button {
-            text: "Trigger 4"
-            onClicked: MavlinkComm.trigger4()
+            text: basicStreamTimer.running?"Basic Stream running":"Basic Stream"
+            onClicked: {
+                basicStreamTimer.running = !basicStreamTimer.running
+            }
+
             width: 120
             height: 50
+        }
+
+        Timer{
+            id: basicStreamTimer
+            interval: 100
+            repeat: true
+            running: false
+            onTriggered: {
+                MavlinkComm.trigger4()
+            }
         }
 
         Button {
             text: "Timer Switch"
             onClicked: {
-                moveTimer.running != moveTimer.running
+                moveTimer.running = !moveTimer.running
             }
 
             width: 120

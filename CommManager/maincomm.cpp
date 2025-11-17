@@ -34,7 +34,8 @@ void MainComm::trigger3()
         return;
     }
     qDebug("send camera def");
-    mavlinkCommManager->sendCameraDefinition("C:\\Users\\Admin\\Documents\\MavlinkProject\\Source\\Camera_Definition_001.xml");
+    mavlinkCommManager->sendCameraParam("C:\\Users\\Admin\\Documents\\MavlinkProject\\Source\\Camera_Definition_001.xml");
+    // mavlinkCommManager->sendCameraDefinitionV2();
 
 }
 
@@ -44,7 +45,7 @@ void MainComm::trigger4()
         qDebug("wtf bro ??? create it");
         return;
     }
-    qDebug("hehe");
+    mavlinkCommManager->sendAllBasicStreams(mavlinkCommManager->mavlink_system);
 
 }
 
